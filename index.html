@@ -1,0 +1,214 @@
+<div class="lock-overlay" id="lockModal">
+    <div class="lock-card">
+        <div class="tiktok-badge">TikTok: @z.svp</div>
+        <h2 class="lock-title">مرحباً بك في موقع علي للدقة والجودة</h2>
+        <p class="lock-desc">يرجى متابعة حسابنا على TikTok لتفعيل خوادم معالجة وضغط الفيديو مجاناً بأعلى جودة.</p>
+        
+        <button class="btn-follow" id="unlockBtn" onclick="handleFollow()">
+            اضغط هنا للمتابعة على TikTok لتفعيل الموقع
+        </button>
+
+        <button class="btn-direct" onclick="closeLock()">
+            دخول مباشر للتجربة (بدون قفل)
+        </button>
+    </div>
+</div>
+
+<header>
+    <div class="logo">موقع علي <span>للدقة والجودة</span></div>
+    <a href="https://www.tiktok.com/@z.svp" target="_blank" class="tiktok-link">متابعة @z.svp</a>
+</header>
+
+<div class="container">
+    <h1 class="hero-title">تحويل وضغط الفيديو بأعلى جودة HandBrake</h1>
+    <p class="hero-subtitle">معالجة احترافية مع دعم معدل 60 إطار في الثانية وبدون فقدان الوضوح</p>
+
+    <div class="upload-box">
+        <div class="upload-icon">📁</div>
+        <h3>اسحب فيديو إلى هنا أو اضغط للرفع</h3>
+        <p style="color: #94a3b8; font-size: 13px; margin-top: 5px;">يدعم صيغ MP4, MOV, MKV بحجم حتى 2GB</p>
+    </div>
+
+    <div class="section-title">اختر الدقة المطلوبة (Resolution):</div>
+    <div class="res-grid">
+        <div class="res-card" onclick="selectRes(this)">
+            <div class="res-name">4K Ultra HD</div>
+            <div class="res-sub">2160p • وضوح فائق</div>
+        </div>
+        <div class="res-card active" onclick="selectRes(this)">
+            <div class="res-name">1080p Full HD</div>
+            <div class="res-sub">الأكثر استخداماً وطلباً</div>
+        </div>
+        <div class="res-card" onclick="selectRes(this)">
+            <div class="res-name">720p HD</div>
+            <div class="res-sub">حجم خفيف ومناسب</div>
+        </div>
+    </div>
+
+    <div class="section-title">إعدادات الجودة ومحرك HandBrake:</div>
+    <div class="quality-grid">
+        <div class="q-card gold active" onclick="selectQual(this)">
+            <div class="q-title">أقصى دقة وجودة</div>
+            <div class="q-desc">RF 16 • H.265 Ultra HQ</div>
+        </div>
+        <div class="q-card blue" onclick="selectQual(this)">
+            <div class="q-title">جودة HandBrake المثالية</div>
+            <div class="q-desc">RF 20 • 60 FPS Turbo</div>
+        </div>
+        <div class="q-card green" onclick="selectQual(this)">
+            <div class="q-title">توازن ممتاز</div>
+            <div class="q-desc">RF 23 • Balanced</div>
+        </div>
+        <div class="q-card purple" onclick="selectQual(this)">
+            <div class="q-title">ضغط قوي للإنترنت</div>
+            <div class="q-desc">RF 28 • Small File</div>
+        </div>
+    </div>
+
+    <button class="btn-convert">ابدأ تحسين وضغط الفيديو ⚡</button>
+</div>
+
+<footer>
+    موقع علي للدقة والجودة © 2026
+</footer>
+
+<style>
+    :root {
+        --bg-dark: #070913;
+        --card-bg: #0f1322;
+        --neon-red: #ff2a5f;
+        --neon-blue: #00d2ff;
+        --neon-gold: #ffb703;
+        --neon-green: #00f5d4;
+        --neon-purple: #9d4edd;
+        --text-main: #ffffff;
+        --text-sub: #94a3b8;
+    }
+    body {
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        font-family: 'Tajawal', sans-serif;
+    }
+    .lock-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(7, 9, 19, 0.96);
+        backdrop-filter: blur(15px);
+        z-index: 999999;
+        display: flex; align-items: center; justify-content: center;
+        padding: 20px; overflow-y: auto;
+    }
+    .lock-card {
+        background: linear-gradient(145deg, #13192e, #0b0f1d);
+        border: 2px solid var(--neon-red);
+        border-radius: 24px; padding: 35px 25px; text-align: center;
+        max-width: 440px; width: 100%;
+        box-shadow: 0 0 40px rgba(255, 42, 95, 0.3);
+    }
+    .lock-title {
+        font-size: 22px; font-weight: 900; margin-bottom: 12px;
+        background: linear-gradient(to right, var(--neon-red), var(--neon-blue));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .lock-desc { color: var(--text-sub); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
+    .tiktok-badge {
+        display: inline-block; background: rgba(255, 42, 95, 0.1);
+        color: var(--neon-red); border: 1px solid var(--neon-red);
+        padding: 6px 16px; border-radius: 50px; font-weight: 700; margin-bottom: 20px;
+    }
+    .btn-follow {
+        display: block; width: 100%; padding: 16px;
+        background: linear-gradient(90deg, var(--neon-red), #d90429);
+        color: white; font-weight: 900; font-size: 15px;
+        border: none; border-radius: 14px; cursor: pointer; margin-bottom: 12px;
+    }
+    .btn-direct {
+        background: transparent; color: var(--text-sub);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px; border-radius: 10px; font-size: 13px; cursor: pointer; width: 100%;
+    }
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 15px 25px; background: rgba(15, 19, 34, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .logo { font-size: 18px; font-weight: 900; color: white; }
+    .logo span { color: var(--neon-blue); }
+    .tiktok-link {
+        color: var(--neon-red); text-decoration: none; font-weight: 700;
+        padding: 6px 14px; border: 1px solid var(--neon-red); border-radius: 50px; font-size: 13px;
+    }
+    .container { max-width: 800px; margin: 30px auto; padding: 0 15px; flex: 1; width: 100%; }
+    .hero-title {
+        text-align: center; font-size: 26px; font-weight: 900; margin-bottom: 10px;
+        background: linear-gradient(90deg, var(--neon-blue), var(--neon-red));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle { text-align: center; color: var(--text-sub); margin-bottom: 30px; font-size: 14px; }
+    .upload-box {
+        border: 2px dashed var(--neon-blue); border-radius: 16px; padding: 35px 15px;
+        text-align: center; background: rgba(0, 210, 255, 0.02); margin-bottom: 25px;
+    }
+    .upload-icon { font-size: 40px; margin-bottom: 10px; color: var(--neon-blue); }
+    .section-title { font-size: 16px; margin-bottom: 12px; color: var(--text-main); font-weight: 700; }
+    .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 25px; }
+    .res-card {
+        background: var(--card-bg); border: 2px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px; padding: 12px; text-align: center; cursor: pointer;
+    }
+    .res-card.active { border-color: var(--neon-blue); background: rgba(0, 210, 255, 0.05); }
+    .res-name { font-weight: 900; font-size: 14px; color: var(--text-main); }
+    .res-sub { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
+    .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 25px; }
+    .q-card { background: var(--card-bg); border: 2px solid rgba(255, 255, 255, 0.05); border-radius: 14px; padding: 15px; cursor: pointer; }
+    .q-card.gold { border-color: rgba(255, 183, 3, 0.3); }
+    .q-card.blue { border-color: rgba(0, 210, 255, 0.3); }
+    .q-card.green { border-color: rgba(0, 245, 212, 0.3); }
+    .q-card.purple { border-color: rgba(157, 78, 221, 0.3); }
+    .q-card.active.gold { border-color: var(--neon-gold); background: rgba(255,183,3,0.05); }
+    .q-card.active.blue { border-color: var(--neon-blue); background: rgba(0,210,255,0.05); }
+    .q-card.active.green { border-color: var(--neon-green); background: rgba(0,245,212,0.05); }
+    .q-card.active.purple { border-color: var(--neon-purple); background: rgba(157,78,221,0.05); }
+    .q-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .q-card.gold .q-title { color: var(--neon-gold); }
+    .q-card.blue .q-title { color: var(--neon-blue); }
+    .q-card.green .q-title { color: var(--neon-green); }
+    .q-card.purple .q-title { color: var(--neon-purple); }
+    .q-desc { font-size: 11px; color: var(--text-sub); }
+    .btn-convert {
+        width: 100%; padding: 16px; background: linear-gradient(90deg, var(--neon-red), var(--neon-blue));
+        border: none; border-radius: 14px; color: white; font-size: 18px; font-weight: 900; cursor: pointer;
+    }
+    footer { text-align: center; padding: 20px; color: var(--text-sub); font-size: 13px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+</style>
+
+<script>
+    function handleFollow() {
+        window.open('https://www.tiktok.com/@z.svp', '_blank');
+        let btn = document.getElementById('unlockBtn');
+        let seconds = 5;
+        btn.style.background = 'linear-gradient(90deg, #00d2ff, #00f5d4)';
+        btn.style.color = '#000';
+        let interval = setInterval(() => {
+            btn.innerText = `جارٍ تفعيل الموقع... (${seconds})`;
+            seconds--;
+            if (seconds < 0) {
+                clearInterval(interval);
+                closeLock();
+            }
+        }, 1000);
+    }
+    function closeLock() { document.getElementById('lockModal').style.display = 'none'; }
+    function selectRes(el) {
+        document.querySelectorAll('.res-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+    }
+    function selectQual(el) {
+        document.querySelectorAll('.q-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+    }
+</script>
